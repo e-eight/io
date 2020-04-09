@@ -1,6 +1,6 @@
 language: c++
 sudo: false
 install:
-  - g++ ini_test.cpp -o ini_test.out
+  - g++ -std=c++11 ini_test.cpp -o ini_test.out
 script:
   - ./ini_test.out
