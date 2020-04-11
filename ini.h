@@ -14,7 +14,7 @@
 //     key2=value2
 //     key3=value3
 //
-// * * * * * * * * * * * * * END OF THE README * * * * * * * * * * * * * * * * *
+// Whitespace trimming code adapted from https://stackoverflow.com/a/25829178.
 
 #ifndef INI_H_
 #define INI_H_
@@ -24,6 +24,7 @@
 #include <regex>
 #include <string>
 #include <unordered_map>
+#include <stdexcept>
 
 namespace io {
 
@@ -75,7 +76,7 @@ namespace io {
       }
       file.close();
     } else {
-      throw "File not read.";
+      throw std::runtime_error("File not read.");
     }
   }
 
@@ -105,7 +106,7 @@ namespace io {
       } else if (valstr == "false" || valstr == "no" || valstr == "0") {
         return false;
       } else {
-        throw "Cannot convert to Boolean value.";
+        throw std::runtime_error("Cannot convert argument to Boolean.");
       }
     } else {
       return default_value;
